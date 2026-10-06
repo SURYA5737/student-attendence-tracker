@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Subjects | Attendence Tracker{% endblock %}
+{% block content %}
+
+<div class="page-heading">
+    <div><span class="eyebrow">DATABASE</span><h1>Subjects</h1><p>Manage subjects used for attendance.</p></div>
+    <a class="btn btn-primary" href="{{ url_for('add_subject') }}">+ Add Subject</a>
+</div>
+
+<div class="table-card">
+<table>
+    <thead><tr><th>ID</th><th>Subject</th><th>Action</th></tr></thead>
+    <tbody>
+    {% for subject in subjects %}
+    <tr><td><span class="id-badge">{{ subject.id }}</span></td><td><strong>{{ subject.subject_name }}</strong></td><td><a class="delete-link" href="{{ url_for('delete_subject', id=subject.id) }}" onclick="return confirm('Delete this subject and related attendance records?')">Delete</a></td></tr>
+    {% else %}
+    <tr><td colspan="3" class="empty">No subjects yet. Add your first subject.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}

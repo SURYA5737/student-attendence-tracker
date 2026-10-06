@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | Attendence Tracker{% endblock %}
+{% block content %}
+
+<section class="hero">
+    <div>
+        <h1>STUDENT ATTENDENCE TRACKER</h1>
+        <p>Track students, manage subjects, mark daily attendance and generate percentage reports from one simple dashboard.</p>
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="{{ url_for('mark_attendance') }}">Mark Attendance →</a>
+            <a class="btn btn-light" href="{{ url_for('report') }}">View Reports</a>
+        </div>
+    </div>
+    <div class="hero-art">
+        <div class="circle circle-one"></div>
+        <div class="circle circle-two"></div>
+        <div class="floating-card">
+            <span class="check-big">✓</span>
+            <div>
+                <strong>Attendance</strong>
+                <small>Updated & organized</small>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-head">
+    <div>
+        <span class="eyebrow">OVERVIEW</span>
+        <h2>Quick Statistics</h2>
+    </div>
+</section>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon blue">👨‍🎓</div>
+        <div><span>Total Students</span><strong>{{ student_count }}</strong></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon purple">📚</div>
+        <div><span>Total Subjects</span><strong>{{ subject_count }}</strong></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon green">✓</div>
+        <div><span>Present Records</span><strong>{{ present_count }}</strong></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon orange">📝</div>
+        <div><span>Total Records</span><strong>{{ attendance_count }}</strong></div>
+    </div>
+</div>
+
+<section class="section-head">
+    <div>
+        <span class="eyebrow">QUICK ACTIONS</span>
+        <h2>Manage your classroom</h2>
+    </div>
+</section>
+
+<div class="action-grid">
+    <a class="action-card" href="{{ url_for('add_student') }}">
+        <span>👤</span>
+        <div><strong>Add Student</strong><small>Create a new student record</small></div>
+        <b>→</b>
+    </a>
+    <a class="action-card" href="{{ url_for('add_subject') }}">
+        <span>📖</span>
+        <div><strong>Add Subject</strong><small>Add a subject to the database</small></div>
+        <b>→</b>
+    </a>
+    <a class="action-card" href="{{ url_for('mark_attendance') }}">
+        <span>✓</span>
+        <div><strong>Mark Attendance</strong><small>Record today's attendance</small></div>
+        <b>→</b>
+    </a>
+    <a class="action-card" href="{{ url_for('report') }}">
+        <span>📊</span>
+        <div><strong>Attendance Report</strong><small>Check percentages and alerts</small></div>
+        <b>→</b>
+    </a>
+</div>
+
+{% endblock %}

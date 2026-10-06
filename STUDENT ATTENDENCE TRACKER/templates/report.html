@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Reports | Attendence Tracker{% endblock %}
+{% block content %}
+
+<div class="page-heading">
+    <div><span class="eyebrow">ANALYTICS</span><h1>Attendance Report</h1><p>Overall attendance percentage for every student.</p></div>
+</div>
+
+<div class="table-card">
+<table>
+    <thead><tr><th>Roll No</th><th>Student</th><th>Department</th><th>Total</th><th>Present</th><th>Absent</th><th>Percentage</th><th>Status</th></tr></thead>
+    <tbody>
+    {% for student in report %}
+    <tr>
+        <td><strong>{{ student.roll_no }}</strong></td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.department }}</td>
+        <td>{{ student.total }}</td>
+        <td class="green-text">{{ student.present }}</td>
+        <td class="red-text">{{ student.absent }}</td>
+        <td><strong>{{ student.percentage }}%</strong></td>
+        <td>
+            {% if student.total == 0 %}<span class="status neutral">No Data</span>
+            {% elif student.percentage < 75 %}<span class="status danger">Low Attendance</span>
+            {% else %}<span class="status success">Good</span>{% endif %}
+        </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="8" class="empty">No students found.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<div class="info-box">⚠️ Students below <strong>75%</strong> attendance are marked as <strong>Low Attendance</strong>.</div>
+
+{% endblock %}

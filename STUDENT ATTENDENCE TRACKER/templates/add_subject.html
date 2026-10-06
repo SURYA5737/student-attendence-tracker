@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Add Subject | Attendence Tracker{% endblock %}
+{% block content %}
+
+<div class="form-page">
+    <div class="page-heading"><div><span class="eyebrow">DATABASE</span><h1>Add Subject</h1><p>Add a subject for attendance marking.</p></div></div>
+    <form class="form-card" method="POST">
+        <label>Subject Name<input type="text" name="subject_name" placeholder="e.g. Database Management Systems" required></label>
+        <div class="form-actions"><a class="btn btn-light" href="{{ url_for('subjects') }}">Cancel</a><button class="btn btn-primary" type="submit">Save Subject</button></div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Add Student | Attendence Tracker{% endblock %}
+{% block content %}
+
+<div class="form-page">
+    <div class="page-heading">
+        <div><span class="eyebrow">DATABASE</span><h1>Add Student</h1><p>Create a student profile for attendance tracking.</p></div>
+    </div>
+    <form class="form-card" method="POST">
+        <label>Student Name<input type="text" name="name" placeholder="e.g. Arun Kumar" required></label>
+        <label>Roll Number<input type="text" name="roll_no" placeholder="e.g. 101" required></label>
+        <label>Department<input type="text" name="department" placeholder="e.g. Information Technology" required></label>
+        <label>Year
+            <select name="year" required>
+                <option value="">Select year</option>
+                <option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option>
+            </select>
+        </label>
+        <div class="form-actions"><a class="btn btn-light" href="{{ url_for('students') }}">Cancel</a><button class="btn btn-primary" type="submit">Save Student</button></div>
+    </form>
+</div>
+
+{% endblock %}

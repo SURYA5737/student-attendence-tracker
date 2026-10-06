@@ -1,0 +1,13 @@
+Upload these project files/folders to GitHub:
+- app.py
+- requirements.txt
+- README.md
+- .gitignore
+- templates/
+- static/
+- docs/
+
+Do NOT upload:
+- attendance.db
+- .venv/
+- __pycache__/

@@ -1,0 +1,27 @@
+ER DIAGRAM (text version)
+
++------------------+
+|     STUDENT      |
++------------------+
+| PK id            |
+| name             |
+| roll_no UNIQUE   |
+| department       |
+| year             |
++--------+---------+
+         |
+         | 1 : M
+         |
++--------v---------+       +------------------+
+|    ATTENDANCE    | M : 1 |     SUBJECT      |
++------------------+       +------------------+
+| PK id            |       | PK id            |
+| FK student_id    +------>| subject_name     |
+| FK subject_id    |       +------------------+
+| attendance_date  |
+| status           |
++------------------+
+
+Relationships:
+Student 1 ---- M Attendance
+Subject 1 ---- M Attendance

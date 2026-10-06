@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Students | Attendence Tracker{% endblock %}
+{% block content %}
+
+<div class="page-heading">
+    <div><span class="eyebrow">DATABASE</span><h1>Students</h1><p>Manage all registered students.</p></div>
+    <a class="btn btn-primary" href="{{ url_for('add_student') }}">+ Add Student</a>
+</div>
+
+<div class="table-card">
+<table>
+    <thead><tr><th>ID</th><th>Roll No</th><th>Student</th><th>Department</th><th>Year</th><th>Action</th></tr></thead>
+    <tbody>
+    {% for student in students %}
+    <tr>
+        <td><span class="id-badge">{{ student.id }}</span></td>
+        <td><strong>{{ student.roll_no }}</strong></td>
+        <td>{{ student.name }}</td>
+        <td><span class="pill">{{ student.department }}</span></td>
+        <td>{{ student.year }}</td>
+        <td><a class="delete-link" href="{{ url_for('delete_student', id=student.id) }}" onclick="return confirm('Delete this student and their attendance records?')">Delete</a></td>
+    </tr>
+    {% else %}
+    <tr><td colspan="6" class="empty">No students yet. Add your first student.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}
